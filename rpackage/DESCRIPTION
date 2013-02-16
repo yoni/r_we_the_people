@@ -7,3 +7,5 @@ Author: yoni.ben-meshulam
 Maintainer: <yoni.bmesh@gmail.com>
 Depends:
     rjson
+    rjson,
+    plyr
