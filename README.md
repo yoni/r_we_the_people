@@ -15,3 +15,11 @@ Usage
 
     library(wethepeople)
     example(wethepeople)
+
+Examples Images
+---------------
+
+In addition to the R package examples, there are pregenerated images from a sample of petitions:
+
+![wordcount](examples/wordcount.png)
+![issues](examples/issues_over_time.png)
