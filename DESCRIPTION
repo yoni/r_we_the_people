@@ -1,11 +1,11 @@
 Package: wethepeople
-Title: Accesses the We The People API.
-Description: Retrieves data from the We The People API.
+Title: Visualizes data from the We The People API.
+Description: Loads data from a flat JSON file and converts it to a data.frame.
 Version: 0.1
 License: file LICENSE
 Author: yoni.ben-meshulam
 Maintainer: <yoni.bmesh@gmail.com>
 Depends:
-    rjson
     rjson,
+    ggplot2,
     plyr
