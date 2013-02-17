@@ -17,7 +17,7 @@ Usage
 Examples Images
 ---------------
 
-In addition to the R package examples, there are pregenerated images from a sample of petitions:
+There following images were generated using the package examples.
 
 #### Petition Issues Over Time
 ![issues](examples/issues_over_time.png)
