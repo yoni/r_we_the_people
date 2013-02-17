@@ -1,7 +1,7 @@
 Package: wethepeople
 Title: Visualizes data from the We The People API.
 Description: Loads data from a flat JSON file and converts it to a data.frame.
-Version: 0.1
+Version: 0.2
 License: file LICENSE
 Author: yoni.ben-meshulam
 Maintainer: <yoni.bmesh@gmail.com>
@@ -10,3 +10,9 @@ Depends:
     ggplot2,
     plyr,
     reshape
+Collate:
+    'load_petitions.r'
+    'melt_issues.r'
+    'plot_issues_over_time.r'
+    'wethepeople-package.r'
+    'load_sample_petitions.r'
