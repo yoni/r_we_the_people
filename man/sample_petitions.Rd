@@ -1,8 +1,8 @@
-\name{load_sample_petitions}
-\alias{load_sample_petitions}
+\name{sample_petitions}
+\alias{sample_petitions}
 \title{Loads a small sample of petitions for use in examples.}
 \usage{
-  load_sample_petitions()
+  sample_petitions()
 }
 \value{
   a sample of 100 petitions
@@ -11,6 +11,6 @@
   Loads a small sample of petitions for use in examples.
 }
 \examples{
-petitions <- load_sample_petitions()
+petitions <- sample_petitions()
 }
 

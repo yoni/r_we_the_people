@@ -5,7 +5,11 @@
 #' @docType package
 #' @author Yoni Ben-Meshulam \email{yoni.bmesh@@gmail.com}
 #' @examples
-#' petitions <- load_sample_petitions()
+#' # Load a sample set of petitions and generate some plots:
+#' petitions <- sample_petitions()
 #' plot_issues_over_time(petitions)
 #' plot_wordcloud(petitions)
+#'
+#' # Create an API Client
+#' client <- WeThePeopleClient('SOME_API_KEY')
 NULL

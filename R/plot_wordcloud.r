@@ -9,7 +9,7 @@
 #' @importFrom tm Corpus DataframeSource removePunctuation removeWords stopwords
 #' @importFrom wordcloud wordcloud
 #' @examples
-#' petitions <- load_sample_petitions()
+#' petitions <- sample_petitions()
 #' print(plot_wordcloud(petitions, 'body'))
 plot_wordcloud <- function(petitions, column) {
   petitions_corpus <- Corpus(DataframeSource(data.frame(petitions[[column]])))
