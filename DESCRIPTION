@@ -8,4 +8,5 @@ Maintainer: <yoni.bmesh@gmail.com>
 Depends:
     rjson,
     ggplot2,
-    plyr
+    plyr,
+    reshape

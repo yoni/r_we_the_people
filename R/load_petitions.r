@@ -9,7 +9,7 @@ load_petitions <- function(file) {
   petitions <- ldply(
     petitions_raw$results,
     function(item) {
-      as.data.frame(unlist(item, recursive=FALSE))
+      as.data.frame(unlist(item, recursive=FALSE), stringsAsFactors=FALSE)
     }
   )
 
