@@ -21,6 +21,11 @@ Examples Images
 
 In addition to the R package examples, there are pregenerated images from a sample of petitions:
 
+h4. Petition Issues Over Time
 ![issues](examples/issues_over_time.png)
 
-![wordcloud](examples/wordcloud.png)
+h4. Petition Title Word Cloud
+![title wordcloud](examples/title_wordcloud.png)
+
+h4. Petition Body Word Cloud
+![body wordcloud](examples/body_wordcloud.png)

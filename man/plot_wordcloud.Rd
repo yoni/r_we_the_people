@@ -2,10 +2,13 @@
 \alias{plot_wordcloud}
 \title{Plots a wordcloud for the given petitions.}
 \usage{
-  plot_wordcloud(petitions)
+  plot_wordcloud(petitions, column)
 }
 \arguments{
   \item{petitions}{}
+
+  \item{column}{which column from the petitions to use for
+  the word cloud (e.g. 'body', 'title')}
 }
 \value{
   plot of the wordcloud for all petitions
@@ -16,6 +19,6 @@
 }
 \examples{
 petitions <- load_sample_petitions()
-print(plot_wordcloud(petitions))
+print(plot_wordcloud(petitions, 'body'))
 }
 
