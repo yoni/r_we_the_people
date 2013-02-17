@@ -3,13 +3,21 @@
 #' @return petitions a data frame of the petitions
 #' @export
 load_petitions <- function(file) {
-  petitions = fromJSON(file=file)
-  items <- ldply(petitions$results, function(item) { as.data.frame(unlist(item, recursive=FALSE)) })
 
-  # Add some POSIXct fields for convenience.
+  petitions_raw <- fromJSON(file=file)
+
+  petitions <- ldply(
+    petitions_raw$results,
+    function(item) {
+      as.data.frame(unlist(item, recursive=FALSE))
+    }
+  )
+
+  # Convert to POSIXct fields for convenience.
   for(field in c('created', 'deadline')) {
-    items[[sprintf('%s_POSIXct', field)]] <- as.POSIXct(items[[field]], origin="1970-01-01")
+    petitions[[sprintf('%s_POSIXct', field)]] <- as.POSIXct(petitions[[field]], origin="1970-01-01")
   }
 
-  items
+  petitions
+
 }
