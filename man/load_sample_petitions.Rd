@@ -10,4 +10,7 @@
 \description{
   Loads a small sample of petitions for use in examples.
 }
+\examples{
+petitions <- load_sample_petitions()
+}
 

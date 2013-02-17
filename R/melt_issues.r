@@ -1,6 +1,7 @@
 #' Melts the petitions data.frame, creating multiple rows for each petition issue.
 #' @param petitions data.frame loaded using load_petitions
 #' @return melted data.frame with one row per issue
+#' @importFrom reshape melt
 #' @export
 melt_issues <- function(petitions) {
   issue_name_fields <- grep("issues.?.name",names(petitions), value=TRUE)

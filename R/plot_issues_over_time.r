@@ -1,5 +1,6 @@
 #' Generates a plot of issues over time.
 #' @param petitions a data frame of petitions
+#' @importFrom ggplot2 ggplot aes geom_point labs
 #' @export
 plot_issues_over_time <- function(petitions) {
 

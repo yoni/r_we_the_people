@@ -7,4 +7,5 @@
 #' @examples
 #' petitions <- load_sample_petitions()
 #' plot_issues_over_time(petitions)
+#' plot_wordcloud(petitions)
 NULL
