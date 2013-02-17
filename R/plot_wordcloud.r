@@ -19,6 +19,15 @@ plot_wordcloud <- function(petitions) {
   m <- as.matrix(tdm)
   v <- sort(rowSums(m),decreasing=TRUE)
   d <- data.frame(word = names(v),freq=v)
-  pal <- brewer.pal(9, "BuGn")
-  wordcloud(d$word,d$freq, scale=c(8,.3),min.freq=2,max.words=100, random.order=T, rot.per=.15, colors=pal, vfont=c("sans serif","plain"))
+  pal <- brewer.pal(8, "Dark2")
+  wordcloud(
+    d$word,
+    d$freq,
+    scale=c(8,.2),
+    min.freq=2,
+    max.words=Inf,
+    random.order=FALSE,
+    rot.per=.15,
+    colors=pal
+  )
 }
