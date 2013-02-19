@@ -18,7 +18,7 @@
   http://onertipaday.blogspot.com/2011/07/word-cloud-in-r.html
 }
 \examples{
-petitions <- sample_petitions()
+data(petitions)
 print(plot_wordcloud(petitions, 'body'))
 }
 

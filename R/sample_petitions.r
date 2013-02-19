@@ -4,5 +4,5 @@
 #' @examples
 #' petitions <- sample_petitions()
 sample_petitions <- function() {
-  WeThePeopleClient()$petitions(file=system.file('data/petitions.json', package='wethepeople'))
+  WeThePeopleClient()$petitions(file=system.file('extdata/petitions.json', package='wethepeople'))
 }

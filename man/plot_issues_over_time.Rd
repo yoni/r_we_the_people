@@ -10,4 +10,8 @@
 \description{
   Generates a plot of issues over time.
 }
+\examples{
+data(petitions)
+plot_issues_over_time(petitions)
+}
 
