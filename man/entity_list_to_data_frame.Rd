@@ -1,8 +1,8 @@
-\name{petitions_raw_to_data_frame}
-\alias{petitions_raw_to_data_frame}
+\name{entity_list_to_data_frame}
+\alias{entity_list_to_data_frame}
 \title{Loads petition data from a JSON file.}
 \usage{
-  petitions_raw_to_data_frame(petitions_raw)
+  entity_list_to_data_frame(entity_list)
 }
 \arguments{
   \item{file}{the path to the JSON file, assumed to be in
