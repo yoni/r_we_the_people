@@ -1,7 +1,7 @@
 R We The People?
 ----------------
 
-An R Package for working with the White Hosue's We The People API.
+An R Package for working with the White House's We The People API.
 
 The package is currently focused on loading petition data,
 running ad-hoc analysis and exploratory visualizations.
@@ -17,7 +17,7 @@ Usage
 Examples Images
 ---------------
 
-In addition to the R package examples, there are pregenerated images from a sample of petitions:
+There following images were generated using the package examples.
 
 #### Petition Issues Over Time
 ![issues](examples/issues_over_time.png)
