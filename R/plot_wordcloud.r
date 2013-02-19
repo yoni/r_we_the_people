@@ -2,7 +2,7 @@
 #'
 #' Shamelessly taken from example code in http://onertipaday.blogspot.com/2011/07/word-cloud-in-r.html
 #'
-#' @param petitions
+#' @param petitions a data frame of petitions
 #' @param column which column from the petitions to use for the word cloud (e.g. 'body', 'title')
 #' @return plot of the wordcloud for all petitions
 #' @export

@@ -5,7 +5,7 @@
   plot_wordcloud(petitions, column)
 }
 \arguments{
-  \item{petitions}{}
+  \item{petitions}{a data frame of petitions}
 
   \item{column}{which column from the petitions to use for
   the word cloud (e.g. 'body', 'title')}

@@ -48,7 +48,7 @@ WeThePeopleClient <- function(key='') {
         break
       }
 
-      petitions.df <- entity_list_to_data_frame(petitions_raw)
+      petitions.df <- petition_list_to_data_frame(petitions_raw)
 
       if(is.null(result)) {
         result <- petitions.df
@@ -125,7 +125,7 @@ WeThePeopleClient <- function(key='') {
       get_petitions(limit=limit)
     }
     else {
-      entity_list_to_data_frame(fromJSON(file=file))
+      petition_list_to_data_frame(fromJSON(file=file))
     }
 
   }
@@ -141,22 +141,22 @@ WeThePeopleClient <- function(key='') {
 
 }
 
-#' Loads petition data from a JSON file.
-#' @param file the path to the JSON file, assumed to be in the format of a We The People API result
-#' @return petitions a data frame of the petitions
+#' Converts a nested petition list to a data frame.
+#' @param petition_list a nested petition list
+#' @return data frame of the entities
 #' @importFrom rjson fromJSON
-entity_list_to_data_frame <- function(entity_list) {
+petition_list_to_data_frame <- function(petition_list) {
 
-  entities <- ldply(
-    entity_list$results,
+  petitions <- ldply(
+    petition_list$results,
     function(item) {
       as.data.frame(unlist(item, recursive=FALSE), stringsAsFactors=FALSE)
     }
   )
 
-  entities <- add_datetime_fields(entities, c('created', 'deadline'))
+  petitions <- add_datetime_fields(petitions, c('created', 'deadline'))
 
-  entities
+  petitions
 
 }
 
