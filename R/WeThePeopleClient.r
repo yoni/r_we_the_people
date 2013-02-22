@@ -58,25 +58,13 @@ WeThePeopleClient <- function(key='') {
       }
 
       if(resource=='petitions') {
-        petitions <- ldply(
-          resources_raw$results,
-          function(item) {
-            as.data.frame(unlist(item, recursive=FALSE), stringsAsFactors=FALSE)
-          }
-        )
-
-        resource_df <- petitions
+        resource_df <- petitions_from_json(resources_raw$results)
       }
       else if(resource == 'users') {
         resource_df <- users_from_json(resources_raw$results)
       }
-      else {
-        resource_df <- ldply(
-          resources_raw$results,
-          function(item) {
-            as.data.frame(rbind(unlist(item, recursive=FALSE)), stringsAsFactors=FALSE)
-          }
-        )
+      else if (resource == 'signatures') {
+        resource_df <- signatures_from_json(resources_raw$results)
       }
 
       if(is.null(result)) {
@@ -146,13 +134,38 @@ WeThePeopleClient <- function(key='') {
 #' users <- from_json(users.from.json)
 #' stopifnot(names(users) == c('type', 'id', 'created'))
 users_from_json <- function(users) {
-  results <- ldply(
+  ldply(
     users,
-    function(d) {
-      as.data.frame(rbind(unlist(d)), stringsAsFactors=FALSE)
+    function(item) {
+      as.data.frame(rbind(unlist(item)), stringsAsFactors=FALSE)
     }
   )
-  results
+}
+
+#' Transforms Signatures from JSON to a data.frame
+#' @param signatures nested lists from the json representation
+#' @return users data.frame
+#' @export
+signatures_from_json <- function(signatures) {
+  ldply(
+    signatures,
+    function(item) {
+      as.data.frame(rbind(unlist(item, recursive=FALSE)), stringsAsFactors=FALSE)
+    }
+  )
+}
+
+#' Transforms petitions from JSON to a data.frame
+#' @param petitions nested lists from the json representation
+#' @return users data.frame
+#' @export
+petitions_from_json <- function(petitions) {
+  ldply(
+    resources_raw$results,
+    function(item) {
+      as.data.frame(unlist(item, recursive=FALSE), stringsAsFactors=FALSE)
+    }
+  )
 }
 
 add_datetime_fields <- function(entities) {
