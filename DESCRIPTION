@@ -20,6 +20,5 @@ Collate:
     'wethepeople-package.r'
     'plot_wordcloud.r'
     'WeThePeopleClient.r'
-    'sample_petitions.r'
     'petition_term_document_matrix.r'
     'generate_wordcloud_plots.r'

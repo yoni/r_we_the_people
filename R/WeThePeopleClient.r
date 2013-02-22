@@ -131,7 +131,7 @@ WeThePeopleClient <- function(key='') {
   #' Loads petitions from the API or from a flat JSON file.
   #' @param file optional file to load from instead of hitting the API
   #' @param limit to limit the number of petitions returned
-  petitions <- function(file=NA, limit=NA) {
+  petitions <- function(limit=NA) {
     get_resource('petitions', limit=limit)
   }
 
@@ -156,10 +156,6 @@ WeThePeopleClient <- function(key='') {
 #' @param users nested lists from the json representation
 #' @return users data.frame
 #' @export
-#' @examples
-#' data(users.from.json)
-#' users <- from_json(users.from.json)
-#' stopifnot(names(users) == c('type', 'id', 'created'))
 users_from_json <- function(users) {
   ldply(
     users,

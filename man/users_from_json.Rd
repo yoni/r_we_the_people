@@ -13,9 +13,4 @@
 \description{
   Transforms Users from JSON to a data.frame
 }
-\examples{
-data(users.from.json)
-users <- from_json(users.from.json)
-stopifnot(names(users) == c('type', 'id', 'created'))
-}
 

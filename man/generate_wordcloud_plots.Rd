@@ -15,6 +15,6 @@
 }
 \examples{
 data(petitions)
-generate_wordcloud_plots(petitions, tempdir())
+generate_wordcloud_plots(petitions, tempdir(), 'body')
 }
 

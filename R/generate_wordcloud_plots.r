@@ -4,7 +4,7 @@
 #' @export
 #' @examples
 #' data(petitions)
-#' generate_wordcloud_plots(petitions, tempdir())
+#' generate_wordcloud_plots(petitions, tempdir(), 'body')
 generate_wordcloud_plots <- function(petitions, path, column) {
   ddply(
     petitions,

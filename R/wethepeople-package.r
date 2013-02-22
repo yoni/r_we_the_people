@@ -3,7 +3,7 @@
 #' @name wethepeople
 #' @title A package for working with the We The People data.
 #' @docType package
-#' @author Yoni Ben-Meshulam \email{yoni.bmesh@@gmail.com}
+#' @author Yoni Ben-Meshulam \email{yoni@@opower.com}
 #' @examples
 #' # Load a sample set of petitions and generate some plots:
 #' data(petitions)
@@ -24,11 +24,11 @@ NULL
 #' @keywords data
 NULL
 
-#' Users JSON result loaded Feb 19, 2013
+#' Signatures loaded Feb 19, 2013
 #'
-#' Sample petitions loaded from the API on February 19, 2013.
+#' Sample signatures loaded from the API on February 19, 2013.
 #'
-#' @name users.from.json
+#' @name signatures
 #' @docType data
 #' @author Yoni Ben-Meshulam \email{yoni@@opower.com}
 #' @keywords data

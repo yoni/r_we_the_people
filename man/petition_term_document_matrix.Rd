@@ -20,7 +20,10 @@
 }
 \examples{
 data(petitions)
-petition_body_tdm <- petition_term_document_matrix(petitions, 'body'))
-petition_title_tdm <- petition_term_document_matrix(petitions, 'title'))
+petition_body_tdm <- petition_term_document_matrix(petitions, 'body')
+petition_title_tdm <- petition_term_document_matrix(petitions, 'title')
+
+petitions$body_and_title <- paste(petitions$body, petitions$title, sep="\\n")
+petition_body_and_title_tdm <- petition_term_document_matrix(petitions, 'body_and_title')
 }
 

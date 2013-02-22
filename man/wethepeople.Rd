@@ -17,6 +17,6 @@ plot_wordcloud(petitions, 'title')
 client <- WeThePeopleClient('SOME_API_KEY')
 }
 \author{
-  Yoni Ben-Meshulam \email{yoni.bmesh@gmail.com}
+  Yoni Ben-Meshulam \email{yoni@opower.com}
 }
 
