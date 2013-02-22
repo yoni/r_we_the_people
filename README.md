@@ -32,8 +32,12 @@ There following images were generated using the package examples.
 ![body wordcloud](examples/body_wordcloud.png)
 
 #### Single Petition Body and Title Word Cloud
+
 ![body wordcloud](examples/petition_wordcloud_4e7b3ea711fb9c3d7a000004.png)
+
 ![body wordcloud](examples/petition_wordcloud_4e7b3f188d8c37d875000004.png)
+
 ![body wordcloud](examples/petition_wordcloud_4e7b70294bd5044b0c00000f.png)
+
 ![body wordcloud](examples/petition_wordcloud_4e7ca6422ee8d0fa79000096.png)
 
