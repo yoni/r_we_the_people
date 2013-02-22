@@ -20,6 +20,7 @@ Usage
     client <- WeThePeople('MY_API_KEY')
     petitions <- client$petitions()
 
+    # Make some eye candy
     plot_issues_over_time(petitions)
 
 
