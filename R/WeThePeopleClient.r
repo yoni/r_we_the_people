@@ -101,8 +101,15 @@ WeThePeopleClient <- function(key='') {
   }
 
   #' Retrieves signatures for the given petition_id.
-  signatures <- function(petition_id, limit=NA) {
-    get_resource('signatures', parent_id=petition_id, limit=limit)
+  petition_signatures <- function(petition_id, limit=NA) {
+    signatures_raw <- get_resource('signatures', parent_id=petition_id, limit=limit)
+    signatures_raw$petition_id <- petition_id
+    signatures_raw
+  }
+
+  #' Retrieves signatures for all of the given petitions.
+  signatures <- function(petitions) {
+    ddply(petitions, .(id), function(p) { petition_signatures(unique(p$id)) })
   }
 
   #' Loads petitions from the API or from a flat JSON file.
@@ -119,6 +126,7 @@ WeThePeopleClient <- function(key='') {
   interface <- list(
     petitions=petitions,
     signatures=signatures,
+    petition_signatures=petition_signatures,
     users=users
   )
 
