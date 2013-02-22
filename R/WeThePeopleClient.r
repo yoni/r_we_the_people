@@ -161,7 +161,7 @@ signatures_from_json <- function(signatures) {
 #' @export
 petitions_from_json <- function(petitions) {
   ldply(
-    resources_raw$results,
+    petitions,
     function(item) {
       as.data.frame(unlist(item, recursive=FALSE), stringsAsFactors=FALSE)
     }
