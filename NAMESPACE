@@ -1,5 +1,4 @@
 export(WeThePeopleClient)
-export(load_petitions)
 export(melt_issues)
 export(plot_issues_over_time)
 export(plot_wordcloud)

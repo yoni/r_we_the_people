@@ -15,7 +15,6 @@ Depends:
     RColorBrewer,
     RCurl
 Collate:
-    'load_petitions.r'
     'melt_issues.r'
     'plot_issues_over_time.r'
     'wethepeople-package.r'
