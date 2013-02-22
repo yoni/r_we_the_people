@@ -12,11 +12,7 @@
 #' data(petitions)
 #' print(plot_wordcloud(petitions, 'body'))
 plot_wordcloud <- function(petitions, column) {
-  petitions_corpus <- Corpus(DataframeSource(data.frame(petitions[[column]])))
-  petitions_corpus <- tm_map(petitions_corpus, removePunctuation)
-  petitions_corpus <- tm_map(petitions_corpus, tolower)
-  petitions_corpus <- tm_map(petitions_corpus, function(x) removeWords(x, stopwords("english")))
-  tdm <- TermDocumentMatrix(petitions_corpus)
+  tdm <- petition_term_document_matrix(petitions, column)
   m <- as.matrix(tdm)
   v <- sort(rowSums(m),decreasing=TRUE)
   d <- data.frame(word = names(v),freq=v)
