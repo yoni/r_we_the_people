@@ -15,6 +15,13 @@ Usage
 
     library(wethepeople)
     example(wethepeople)
+    
+    # Load petitions
+    client <- WeThePeople('MY_API_KEY')
+    petitions <- client$petitions()
+
+    plot_issues_over_time(petitions)
+
 
 Examples Images
 ---------------
@@ -24,8 +31,6 @@ There following images were generated using the package examples.
 #### Petition Issues Over Time
 ![issues](examples/issues_over_time.png)
 
-#### All Petitions' Body And Title Word Cloud
-![body wordcloud](examples/body_and_title_wordcloud.png)
 
 #### All Petitions' Title Word Cloud
 ![title wordcloud](examples/title_wordcloud.png)
