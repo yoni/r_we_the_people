@@ -53,6 +53,9 @@ WeThePeopleClient <- function(key='') {
       result_count <- length(resources_raw$results)
       message("Loaded ", result_count, " resources")
 
+      metadata <- resources_raw$metadata
+      message("Response Metadata: ", do.call(paste, list(names(metadata), metadata)))
+
       if(result_count == 0) {
         break
       }
