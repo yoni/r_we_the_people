@@ -30,7 +30,13 @@ WeThePeopleClient <- function(key='') {
   #' @param resource the name of the resource to get from the We The People API. e.g. petitions, users
   #' @param limit the maximum number of values to get. e.g. 10, 1000. NA returns all values.
   #' @return data.frame of the resource values
-  get_resource <- function(resource, limit=NA, parent_id=NA, batch_sizes=list(signatures=1000, users=100, petitions=100)) {
+  get_resource <- function(
+    resource,
+    limit=NA,
+    parent_id=NA,
+    mock=TRUE) {
+
+    BATCH_SIZES=list(signatures=1000, users=100, petitions=100)
 
     result <- NULL
     count <- 0
@@ -44,7 +50,7 @@ WeThePeopleClient <- function(key='') {
         signatures = we_the_people_url('signatures', parent='petitions', parent_id=parent_id)
       )
 
-      params <- list(key=key, limit=batch_sizes[resource], offset=count)
+      params <- list(key=key, limit=BATCH_SIZES[resource], offset=count)
 
       message("Getting ", resource, " from the We The People API. URL: ", fully_qualified_url, " PARAMS: ", toJSON(params))
 
@@ -109,7 +115,17 @@ WeThePeopleClient <- function(key='') {
 
   #' Retrieves signatures for all of the given petitions.
   signatures <- function(petitions) {
-    ddply(petitions, .(id), function(p) { petition_signatures(unique(p$id)) })
+    count <- 0
+    total <- nrow(petitions)
+    ddply(
+      petitions,
+      .(id),
+      function(p) {
+        count <- count + 1
+        petition_signatures(unique(p$id))
+        message("Loaded ", count, " out of ", total, " petitions")
+      }
+    )
   }
 
   #' Loads petitions from the API or from a flat JSON file.

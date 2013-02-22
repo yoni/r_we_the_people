@@ -1,4 +1,5 @@
 export(WeThePeopleClient)
+export(generate_wordcloud_plots)
 export(melt_issues)
 export(petition_term_document_matrix)
 export(petitions_from_json)
