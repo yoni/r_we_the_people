@@ -18,46 +18,86 @@ WeThePeopleClient <- function(key='') {
       stop("You must provide both a parent and an id if using a nested resource.")
 
     if(is.na(parent)) {
-      sprintf("%s/%ss.json", BASE_URL, resource)
+      sprintf("%s/%s.json", BASE_URL, resource)
     }
     else {
-      sprintf("%s/%ss/%s/%ss.json", BASE_URL, parent, parent_id, resource)
+      sprintf("%s/%s/%s/%s.json", BASE_URL, parent, parent_id, resource)
     }
 
   }
 
   #' Retrieves all petitions up to the given limit.
-  get_petitions <- function(limit=NA) {
+  #' @param resource the name of the resource to get from the We The People API. e.g. petitions, users
+  #' @param limit the maximum number of values to get. e.g. 10, 1000. NA returns all values.
+  #' @return data.frame of the resource values
+  get_resource <- function(resource, limit=NA, parent_id=NA, batch_sizes=list(signatures=1000, users=100, petitions=100)) {
 
     result <- NULL
     count <- 0
 
     repeat {
 
-      fully_qualified_url <- we_the_people_url("petition")
-      params <- list(key=key, limit=100, offset=count)
+      fully_qualified_url <- switch(
+        resource,
+        petitions = we_the_people_url(resource),
+        users = we_the_people_url(resource),
+        signatures = we_the_people_url('signatures', parent='petitions', parent_id=parent_id)
+      )
 
-      message("Getting petitions from the We The People API. URL: ", fully_qualified_url, " PARAMS: ", toJSON(params))
+      params <- list(key=key, limit=batch_sizes[resource], offset=count)
 
-      petitions_raw <- fromJSON(getForm(fully_qualified_url, .params=params))
-      result_count <- length(petitions_raw$results)
+      message("Getting ", resource, " from the We The People API. URL: ", fully_qualified_url, " PARAMS: ", toJSON(params))
 
-      message("Loaded ", result_count, " petitions")
+      resources_raw <- fromJSON(getForm(fully_qualified_url, .params=params))
+
+      result_count <- length(resources_raw$results)
+      message("Loaded ", result_count, " resources")
 
       if(result_count == 0) {
         break
       }
 
-      petitions.df <- petition_list_to_data_frame(petitions_raw)
+      if(resource=='petitions') {
+        petitions <- ldply(
+          resources_raw$results,
+          function(item) {
+            as.data.frame(unlist(item, recursive=FALSE), stringsAsFactors=FALSE)
+          }
+        )
 
-      if(is.null(result)) {
-        result <- petitions.df
+        petitions <- add_datetime_fields(petitions, c('created', 'deadline'))
+        resource_df <- petitions
+      }
+      else if(resource == 'users') {
+        resource_df <- users_from_json(resources_raw$results)
       }
       else {
-        result <- merge(result, petitions.df, all=TRUE)
+        resource_df <- ldply(
+          resources_raw$results,
+          function(item) {
+            as.data.frame(rbind(unlist(item, recursive=FALSE)), stringsAsFactors=FALSE)
+          }
+        )
+      }
+
+      if(resource=='signatures') {
+        resource_df <- add_datetime_fields(resource_df, c('created'))
+      }
+
+      if(is.null(result)) {
+        result <- resource_df
+      }
+      else {
+        result <- merge(result, resource_df, all=TRUE)
+      }
+
+      if(count == nrow(result)) {
+        break
       }
 
       count <- nrow(result)
+
+      message("New count: ", count)
 
       if(!is.na(limit) && count >= limit) {
         break
@@ -74,65 +114,25 @@ WeThePeopleClient <- function(key='') {
   }
 
   #' Retrieves signatures for the given petition_id.
-  #' Due to a bug, signatures will not be available until the next release.
-  #' See https://github.com/WhiteHouse/hackathon/issues/6
-  #' https://petitions.whitehouse.gov/api/v1/petitions/1234/signatures.json?key=bCYUnMF3782k9s8&mock=1
-  signatures <- function(petition_id, mock=1) {
-
-    # Override petition_id to be an integer for now. See the bug for details on why.
-    petition_id <- 1234
-
-    signatures_vector <- c()
-    count <- 0
-
-    repeat {
-
-      fully_qualified_url <- we_the_people_url('signature', parent='petition', parent_id=petition_id)
-      params <- list(key=key, limit=100, offset=count, mock=mock)
-
-      message("Getting signatures from the We The People API. URL: ", fully_qualified_url, " PARAMS: ", toJSON(params))
-
-      signatures_raw <- fromJSON(getForm(fully_qualified_url, .params=params))
-      signatures_vector_count <- length(signatures_raw$results)
-
-      message("Loaded ", signatures_vector_count, " signatures")
-
-      signatures_vector <- c(signatures_vector, signatures_raw$results)
-
-      count <- nrow(signatures_vector)
-
-      if(signatures_vector_count == 0 || mock == 1) {
-        break
-      }
-
-    }
-
-    signatures_df <- ldply(signatures_vector, data.frame, stringsAsFactors=FALSE)
-    signatures_df$petition_id <- petition_id
-
-    signatures_df <- add_datetime_fields(signatures_df, c('created'))
-
-    signatures_df
-
+  signatures <- function(petition_id, limit=NA) {
+    get_resource('signatures', parent_id=petition_id, limit=limit)
   }
 
   #' Loads petitions from the API or from a flat JSON file.
   #' @param file optional file to load from instead of hitting the API
   #' @param limit to limit the number of petitions returned
   petitions <- function(file=NA, limit=NA) {
+    get_resource('petitions', limit=limit)
+  }
 
-    if(is.na(file)) {
-      get_petitions(limit=limit)
-    }
-    else {
-      petition_list_to_data_frame(fromJSON(file=file))
-    }
-
+  users <- function(limit=NA) {
+    get_resource('users', limit=limit)
   }
 
   interface <- list(
     petitions=petitions,
-    signatures=signatures
+    signatures=signatures,
+    users=users
   )
 
   class(interface) <- 'WeThePeople'
@@ -141,23 +141,22 @@ WeThePeopleClient <- function(key='') {
 
 }
 
-#' Converts a nested petition list to a data frame.
-#' @param petition_list a nested petition list
-#' @return data frame of the entities
-#' @importFrom rjson fromJSON
-petition_list_to_data_frame <- function(petition_list) {
-
-  petitions <- ldply(
-    petition_list$results,
-    function(item) {
-      as.data.frame(unlist(item, recursive=FALSE), stringsAsFactors=FALSE)
+#' Transforms Users from JSON to a data.frame
+#' @param users nested lists from the json representation
+#' @return users data.frame
+#' @export
+#' @examples
+#' data(users.from.json)
+#' users <- from_json(users.from.json)
+#' stopifnot(names(users) == c('type', 'id', 'created'))
+users_from_json <- function(users) {
+  results <- ldply(
+    users,
+    function(d) {
+      as.data.frame(rbind(unlist(d)))
     }
   )
-
-  petitions <- add_datetime_fields(petitions, c('created', 'deadline'))
-
-  petitions
-
+  results
 }
 
 add_datetime_fields <- function(entities, fields) {

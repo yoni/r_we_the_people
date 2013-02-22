@@ -23,3 +23,13 @@ NULL
 #' @author Yoni Ben-Meshulam \email{yoni@@opower.com}
 #' @keywords data
 NULL
+
+#' Users JSON result loaded Feb 19, 2013
+#'
+#' Sample petitions loaded from the API on February 19, 2013.
+#'
+#' @name users.from.json
+#' @docType data
+#' @author Yoni Ben-Meshulam \email{yoni@@opower.com}
+#' @keywords data
+NULL
