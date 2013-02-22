@@ -65,7 +65,6 @@ WeThePeopleClient <- function(key='') {
           }
         )
 
-        petitions <- add_datetime_fields(petitions, c('created', 'deadline'))
         resource_df <- petitions
       }
       else if(resource == 'users') {
@@ -78,10 +77,6 @@ WeThePeopleClient <- function(key='') {
             as.data.frame(rbind(unlist(item, recursive=FALSE)), stringsAsFactors=FALSE)
           }
         )
-      }
-
-      if(resource=='signatures') {
-        resource_df <- add_datetime_fields(resource_df, c('created'))
       }
 
       if(is.null(result)) {
@@ -109,6 +104,7 @@ WeThePeopleClient <- function(key='') {
       result <- head(result, n=limit)
     }
 
+    result <- add_datetime_fields(result)
     result
 
   }
@@ -153,17 +149,18 @@ users_from_json <- function(users) {
   results <- ldply(
     users,
     function(d) {
-      as.data.frame(rbind(unlist(d)))
+      as.data.frame(rbind(unlist(d)), stringsAsFactors=FALSE)
     }
   )
   results
 }
 
-add_datetime_fields <- function(entities, fields) {
+add_datetime_fields <- function(entities) {
 
-  for(field in fields) {
-    if(field %in% names(entities))
+  for(field in c('created', 'deadline')) {
+    if(field %in% names(entities)) {
       entities[[sprintf('%s_POSIXct', field)]] <- as.POSIXct(as.numeric(entities[[field]]), origin="1970-01-01")
+    }
   }
 
   entities
