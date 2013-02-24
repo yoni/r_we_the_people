@@ -22,3 +22,5 @@ Collate:
     'WeThePeopleClient.r'
     'petition_term_document_matrix.r'
     'generate_wordcloud_plots.r'
+    'plot_status_by_creation.r'
+    'plot_issues_pending_response.r'
