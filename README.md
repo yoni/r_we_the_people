@@ -1,7 +1,9 @@
 R We The People?
 ----------------
 
+
 An R Package for working with the White House's We The People API.
+
 
 The package is currently focused on loading petition data,
 running ad-hoc analysis and exploratory visualizations.
@@ -13,6 +15,14 @@ Usage
 
     library(wethepeople)
     example(wethepeople)
+    
+    # Load petitions
+    client <- WeThePeople('MY_API_KEY')
+    petitions <- client$petitions()
+
+    # Make some eye candy
+    plot_issues_over_time(petitions)
+
 
 
     # Load petitions
@@ -34,8 +44,6 @@ There following images were generated using the package examples.
 #### Status by Creation Date
 ![issues](examples/status_by_creation.png)
 
-#### All Petitions' Body And Title Word Cloud
-![body wordcloud](examples/body_and_title_wordcloud.png)
 
 #### All Petitions' Title Word Cloud
 ![title wordcloud](examples/title_wordcloud.png)
