@@ -15,22 +15,15 @@ Usage
 
     library(wethepeople)
     example(wethepeople)
-    
+
     # Load petitions
     client <- WeThePeople('MY_API_KEY')
     petitions <- client$petitions()
 
     # Make some eye candy
     plot_issues_over_time(petitions)
-
-
-
-    # Load petitions
-    client <- WeThePeople('MY_API_KEY')
-    petitions <- client$petitions()
-
-    plot_issues_over_time(petitions)
     plot_issues_pending_response(petitions)
+
 
 Examples Images
 ---------------
