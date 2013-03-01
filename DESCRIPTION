@@ -24,3 +24,4 @@ Collate:
     'generate_wordcloud_plots.r'
     'plot_status_by_creation.r'
     'plot_issues_pending_response.r'
+    'plot_signature_count.r'
