@@ -1,0 +1,23 @@
+wethepeople 0.1
+---------------
+
+NEW FEATURES
+
+* `WeThePeopleClient` implements a basic API client, including loading of
+  petitions, signatures, and users.
+
+* `plot_wordcloud` can calculate the most important terms in a petitions or set
+  of petitions and plot them using the `wordcloud` package.
+
+* `petition_term_document_matrix` can calculate the term document matrix for a
+  petition using the `tm` package.
+
+* `generate_wordcloud_plots` generates wordcloud plots for allpetitions. The
+  result is a set of images appropriate for use in web applications etc.
+
+* `plot_status_by_creation`, `plot_issues_pending_response.r`, and `plot_issues_over_time`
+  generate summary plots of all petitions/issues.
+
+* `plot_signature_count` generates a simple plot of signatures for a given petition.
+
+* `petitions` and `signatures` sample data sets facilitat examples and ease of development.
