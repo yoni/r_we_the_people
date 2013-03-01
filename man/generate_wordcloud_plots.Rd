@@ -8,7 +8,7 @@
   \item{petitions}{data.frame of petitions, e.g. loaded
   from client$petitions()}
 
-  \item{path}{}
+  \item{path}{the path to write the images to}
 }
 \description{
   Generates plots of wordclouds for each petition.

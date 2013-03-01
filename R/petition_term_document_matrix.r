@@ -1,6 +1,5 @@
 #' Calculates the TermDocumentMatrix for petitions.
 #' @param petitions data.frame of petitions
-#' @param petitions a data frame of petitions
 #' @param column which column from the petitions to use for the word cloud (e.g. 'body', 'title')
 #' @return TermDocumentMatrix the tdm of the given petition column
 #' @importFrom tm Corpus DataframeSource removePunctuation removeWords stopwords

@@ -1,6 +1,7 @@
 #' Generates plots of wordclouds for each petition.
 #' @param petitions data.frame of petitions, e.g. loaded from client$petitions()
-#' @param path
+#' @param path the path to write the images to
+#" @param column the column to use as the input text
 #' @export
 #' @examples
 #' data(petitions)

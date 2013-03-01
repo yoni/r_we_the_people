@@ -1,5 +1,5 @@
 #' Plots the signature counts over time.
-#' @param signatures
+#' @param signatures data.frame of the signatures to plot
 #' @return ggplot2 plot object
 plot_signature_count <- function(signatures) {
   signatures$count <- 1
