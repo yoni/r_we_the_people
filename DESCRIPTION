@@ -1,10 +1,18 @@
 Package: wethepeople
-Title: Visualizes data from the We The People API.
-Description: Loads data from a flat JSON file and converts it to a data.frame.
+Title: An R client for interacting with the White House's "We The People"
+    petition API.
+Description: Implements an R client for the We The People petitions API. The
+    client supports loading petitions, signatures, and users. Additionally, the
+    package includes petition and signature data samples. There are also
+    several functions for analyzing and visualizing the data. Term frequency
+    calculations and word clouds are supported using the tm and wordcloud
+    package, respectively. Petition and issue summary plots are also
+    implemented using the ggplot2 package. For additional information about the
+    We The People project, see https://petitions.whitehouse.gov.
 Version: 0.2
 License: GPL-3
-Author: yoni.ben-meshulam
-Maintainer: <yoni@opower.com>
+Author: Yoni Ben-Meshulam
+Maintainer: Yoni Ben-Meshulam <yoni@opower.com>
 Depends:
     R (>= 2.10),
     rjson,

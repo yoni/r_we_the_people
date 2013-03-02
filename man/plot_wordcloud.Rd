@@ -12,6 +12,8 @@
   the word cloud (e.g. 'body', 'title')}
 
   \item{colors}{the colors to use for the words}
+
+  \item{scale}{the scale to use for the wordcloud plot}
 }
 \value{
   plot of the wordcloud for all petitions
@@ -22,6 +24,7 @@
 }
 \examples{
 data(petitions)
-print(plot_wordcloud(petitions, 'body'))
+one_petition <- head(petitions, n=1)
+print(plot_wordcloud(one_petition, 'body'))
 }
 

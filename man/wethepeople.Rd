@@ -10,8 +10,9 @@
 \examples{
 # Load a sample set of petitions and generate some plots:
 data(petitions)
-plot_issues_over_time(petitions)
-plot_wordcloud(petitions, 'title')
+some_petitions <- head(petitions, n=5)
+plot_issues_over_time(some_petitions)
+plot_wordcloud(some_petitions, 'title')
 
 # Create an API Client
 client <- WeThePeopleClient('SOME_API_KEY')

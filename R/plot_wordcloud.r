@@ -5,14 +5,15 @@
 #' @param petitions a data frame of petitions
 #' @param column which column from the petitions to use for the word cloud (e.g. 'body', 'title')
 #' @param colors the colors to use for the words
-#" @param scale the scale to use for the wordcloud plot
+#' @param scale the scale to use for the wordcloud plot
 #' @return plot of the wordcloud for all petitions
 #' @export
 #' @importFrom tm Corpus DataframeSource removePunctuation removeWords stopwords
 #' @importFrom wordcloud wordcloud
 #' @examples
 #' data(petitions)
-#' print(plot_wordcloud(petitions, 'body'))
+#' one_petition <- head(petitions, n=1)
+#' print(plot_wordcloud(one_petition, 'body'))
 plot_wordcloud <- function(petitions, column, colors=brewer.pal(8, "Dark2"), scale=c(8, .2)) {
   tdm <- petition_term_document_matrix(petitions, column)
   m <- as.matrix(tdm)
