@@ -9,7 +9,7 @@ Description: Implements an R client for the We The People petitions API. The
     package, respectively. Petition and issue summary plots are also
     implemented using the ggplot2 package. For additional information about the
     We The People project, see https://petitions.whitehouse.gov.
-Version: 0.2
+Version: 0.3
 License: GPL-3
 Author: Yoni Ben-Meshulam
 Maintainer: Yoni Ben-Meshulam <yoni@opower.com>
@@ -34,3 +34,4 @@ Collate:
     'plot_status_by_creation.r'
     'plot_issues_pending_response.r'
     'plot_signature_count.r'
+    'plot_signatures_by_time_of_day.r'

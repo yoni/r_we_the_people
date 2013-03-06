@@ -1,6 +1,10 @@
 #' Plots the signature counts over time.
 #' @param signatures data.frame of the signatures to plot
 #' @return ggplot2 plot object
+#' @export
+#' @examples
+#' data(signatures)
+#' print(plot_signature_count(signatures))
 plot_signature_count <- function(signatures) {
   signatures$count <- 1
   signatures$cumsum <- cumsum(signatures$count)
