@@ -8,7 +8,7 @@
 #' client <- WeThePeopleClient('MY_API_KEY')
 WeThePeopleClient <- function(key='') {
 
-  BASE_URL <- "https://petitions.whitehouse.gov/api/v1"
+  BASE_URL <- "http://api.whitehouse.gov/v1/petitions"
 
   #' Constructs a resource URL based on parent-child relationships defined in the API.
   we_the_people_url <- function(resource, parent=NA, parent_id=NA) {
