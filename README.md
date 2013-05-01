@@ -25,8 +25,8 @@ Usage
     plot_issues_pending_response(petitions)
 
 
-Examples Images
----------------
+Examples
+--------
 
 There following images were generated using the package examples.
 
