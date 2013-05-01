@@ -1,14 +1,15 @@
 #' We The People API Client, based on RCurl.
 #' see RCurl
-#' @param key optionsl We the People API Key. All functions except for API calls should work without the key.
 #' @return WeThePeople Object with methods for interfacing with the API
 #' @importFrom RCurl getForm
 #' @export
 #' @examples
-#' client <- WeThePeopleClient('MY_API_KEY')
-WeThePeopleClient <- function(key='') {
+#' client <- WeThePeopleClient()
+#' petitions <- client$petitions(limit=1)
+#' signatures <- client$signatures(petitions)
+WeThePeopleClient <- function() {
 
-  BASE_URL <- "http://api.whitehouse.gov/v1/petitions"
+  BASE_URL <- "https://api.whitehouse.gov/v1"
 
   #' Constructs a resource URL based on parent-child relationships defined in the API.
   we_the_people_url <- function(resource, parent=NA, parent_id=NA) {
@@ -36,7 +37,8 @@ WeThePeopleClient <- function(key='') {
     parent_id=NA,
     mock=TRUE) {
 
-    BATCH_SIZES=list(signatures=1000, users=100, petitions=100)
+    BATCH_SIZES <- list(signatures=1000, users=100, petitions=100)
+    CURL_OPTS <- list(ssl.verifypeer = FALSE)
 
     result <- NULL
     count <- 0
@@ -50,11 +52,15 @@ WeThePeopleClient <- function(key='') {
         signatures = we_the_people_url('signatures', parent='petitions', parent_id=parent_id)
       )
 
-      params <- list(key=key, limit=BATCH_SIZES[resource], offset=count)
+      params <- list(limit=BATCH_SIZES[[resource]], offset=count)
 
       message("Getting ", resource, " from the We The People API. URL: ", fully_qualified_url, " PARAMS: ", toJSON(params))
 
-      resources_raw <- fromJSON(getForm(fully_qualified_url, .params=params))
+      # Set ssl.verifypeer = FALSE to work around a problem with Windows thinking the SSL Certificate is bad
+      # See http://www.r-bloggers.com/update-to-data-on-github-post-solution-to-an-rcurl-problem/
+
+      raw_json <- getForm(fully_qualified_url, .opts=CURL_OPTS, .params=params)
+      resources_raw <- fromJSON(raw_json)
 
       result_count <- length(resources_raw$results)
       message("Loaded ", result_count, " resources")
@@ -191,6 +197,8 @@ petitions_from_json <- function(petitions) {
   )
 }
 
+#' Adds datetime fields based on some of the common fields in the resources
+#' @param entities representing instances of the resource to which we'd like to add datetime fields
 add_datetime_fields <- function(entities) {
 
   for(field in c('created', 'deadline')) {

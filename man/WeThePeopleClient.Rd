@@ -3,11 +3,7 @@
 \title{We The People API Client, based on RCurl.
 see RCurl}
 \usage{
-  WeThePeopleClient(key = "")
-}
-\arguments{
-  \item{key}{optionsl We the People API Key. All functions
-  except for API calls should work without the key.}
+  WeThePeopleClient()
 }
 \value{
   WeThePeople Object with methods for interfacing with the
@@ -17,6 +13,8 @@ see RCurl}
   We The People API Client, based on RCurl. see RCurl
 }
 \examples{
-client <- WeThePeopleClient('MY_API_KEY')
+client <- WeThePeopleClient()
+petitions <- client$petitions(limit=1)
+signatures <- client$signatures(petitions)
 }
 

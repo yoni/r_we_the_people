@@ -15,7 +15,9 @@ plot_issues_over_time(some_petitions)
 plot_wordcloud(some_petitions, 'title')
 
 # Create an API Client
-client <- WeThePeopleClient('SOME_API_KEY')
+client <- WeThePeopleClient()
+petitions <- client$petitions(limit=1)
+signatures <- client$signatures(petitions)
 }
 \author{
   Yoni Ben-Meshulam \email{yoni@opower.com}

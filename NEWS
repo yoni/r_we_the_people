@@ -1,3 +1,12 @@
+wethepeople 0.4
+---------------
+* Updates the base API URL to https://api.whitehouse.com/v1
+* Removes the need for an API key
+* Bumps up R dependency to 2.15. I won't have time to support additional R versions for now
+* Adds examples for loading petitions and signatures to the WeThePeopleClient and to the package vignette
+* Fixes a bug in the BATCH_SIZES loading. Should return a value instead of a list
+* Adds a workaround for SSL certificate verification issue on R 3.0 for Windows
+
 wethepeople 0.3
 ---------------
 * Adds signature plotting functions: by time of day, and cumulative sums

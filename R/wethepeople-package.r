@@ -12,7 +12,9 @@
 #' plot_wordcloud(some_petitions, 'title')
 #'
 #' # Create an API Client
-#' client <- WeThePeopleClient('SOME_API_KEY')
+#' client <- WeThePeopleClient()
+#' petitions <- client$petitions(limit=1)
+#' signatures <- client$signatures(petitions)
 NULL
 
 #' Petitions loaded Feb 19, 2013
@@ -37,4 +39,4 @@ NULL
 
 # Appease CRAN by removing all "no visible binding for global variable" notes.
 # See http://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when
-if(getRversion() >= "2.15.1") globalVariables(c("created_POSIXct", "deadline_POSIXct", "issue", "signature.count", "status"))
+if(getRversion() >= "2.15.1") globalVariables(c("created_POSIXct", "deadline_POSIXct", "issue", "signature.count", "status", "hour"))
