@@ -11,7 +11,7 @@ running ad-hoc analysis and exploratory visualizations.
 Usage
 -----
 
-    install.package('wethepeople')
+    install.packages('wethepeople')
 
     library(wethepeople)
     example(wethepeople)
