@@ -1,3 +1,9 @@
+wethepeople 0.5
+---------------
+* Fixes #2, namely making assuming all fields are camel-case instead of snake-case, in accordance
+with a corresponding change to the We the People API.
+* Adds MySQL access support. Assumes the MySQL schema is the same as the White House mysqldump file's.
+
 wethepeople 0.4
 ---------------
 * Updates the base API URL to https://api.whitehouse.com/v1

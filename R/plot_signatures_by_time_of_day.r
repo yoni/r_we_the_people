@@ -1,4 +1,4 @@
-#' Plots the signature counts over time.
+#' Plots the signature counts by time of day.
 #' @param signatures data.frame of the signatures to plot
 #' @return ggplot2 plot object
 #' @export

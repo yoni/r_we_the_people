@@ -17,7 +17,7 @@ Usage
     example(wethepeople)
 
     # Load petitions
-    client <- WeThePeopleClient()
+    client <- WeThePeopleClientAPI()
     petitions <- client$petitions()
 
     # Make some eye candy

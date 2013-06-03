@@ -1,9 +1,9 @@
-\name{WeThePeopleClient}
-\alias{WeThePeopleClient}
+\name{WeThePeopleAPIClient}
+\alias{WeThePeopleAPIClient}
 \title{We The People API Client, based on RCurl.
 see RCurl}
 \usage{
-  WeThePeopleClient()
+  WeThePeopleAPIClient()
 }
 \value{
   WeThePeople Object with methods for interfacing with the
@@ -13,7 +13,7 @@ see RCurl}
   We The People API Client, based on RCurl. see RCurl
 }
 \examples{
-client <- WeThePeopleClient()
+client <- WeThePeopleAPIClient()
 petitions <- client$petitions(limit=1)
 signatures <- client$signatures(petitions)
 }

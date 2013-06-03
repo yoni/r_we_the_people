@@ -1,6 +1,6 @@
 \name{plot_signatures_by_time_of_day}
 \alias{plot_signatures_by_time_of_day}
-\title{Plots the signature counts over time.}
+\title{Plots the signature counts by time of day.}
 \usage{
   plot_signatures_by_time_of_day(signatures)
 }
@@ -11,7 +11,7 @@
   ggplot2 plot object
 }
 \description{
-  Plots the signature counts over time.
+  Plots the signature counts by time of day.
 }
 \examples{
 data(signatures)

@@ -13,7 +13,7 @@ plot_issues_pending_response <- function(petitions) {
     aes(
       x=deadline_POSIXct,
       y=issue,
-      size=signature.count
+      size=signatureCount
     )
   ) +
     geom_point() +

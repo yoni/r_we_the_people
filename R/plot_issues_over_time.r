@@ -14,7 +14,7 @@ plot_issues_over_time <- function(petitions) {
     aes(
       x=created_POSIXct,
       y=issue,
-      size=signature.count,
+      size=signatureCount,
       color=status
     )
   ) +

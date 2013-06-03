@@ -4,10 +4,10 @@
 #' @importFrom RCurl getForm
 #' @export
 #' @examples
-#' client <- WeThePeopleClient()
+#' client <- WeThePeopleAPIClient()
 #' petitions <- client$petitions(limit=1)
 #' signatures <- client$signatures(petitions)
-WeThePeopleClient <- function() {
+WeThePeopleAPIClient <- function() {
 
   BASE_URL <- "https://api.whitehouse.gov/v1"
 
@@ -127,9 +127,7 @@ WeThePeopleClient <- function() {
       petitions,
       .(id),
       function(p) {
-        count <- count + 1
         petition_signatures(unique(p$id))
-        message("Loaded ", count, " out of ", total, " petitions")
       }
     )
   }
@@ -152,7 +150,7 @@ WeThePeopleClient <- function() {
     users=users
   )
 
-  class(interface) <- 'WeThePeople'
+  class(interface) <- 'WeThePeopleAPIClient'
 
   interface
 
