@@ -25,7 +25,8 @@ Depends:
     tm,
     wordcloud,
     RColorBrewer,
-    RCurl,
+    RCurl
+Suggests:
     RMySQL
 Collate:
     'melt_issues.r'
