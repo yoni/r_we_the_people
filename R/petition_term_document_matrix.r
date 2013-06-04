@@ -6,6 +6,7 @@
 #' @importFrom wordcloud wordcloud
 #' @examples
 #' data(petitions)
+#' petitions <- head(petitions)
 #' petition_body_tdm <- petition_term_document_matrix(petitions, 'body')
 #' petition_title_tdm <- petition_term_document_matrix(petitions, 'title')
 #'
