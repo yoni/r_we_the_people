@@ -11,5 +11,12 @@ melt_issues <- function(petitions) {
   melted_petitions$value <- NULL
   issue_id_fields <- grep("issues.?.id",names(petitions), value=TRUE)
   melted_petitions <- melted_petitions[, !(names(melted_petitions) %in% issue_id_fields)]
-  unique(subset(melted_petitions, is.na(issue) == FALSE))
+  melted_petitions <- unique(subset(melted_petitions, is.na(issue) == FALSE))
+
+  # Reorder the issues factor by the cumulative sum of signatures for each issue:
+  issue_cumulative_sums <- ddply(melted_petitions, .(issue), function(d) data.frame(cumSignatures=sum(d$signatureCount)))
+  sorted_issues <- issue_cumulative_sums[with(issue_cumulative_sums, order(cumSignatures)),]$issue
+  melted_petitions$issue <- factor(melted_petitions$issue, levels=sorted_issues, ordered = TRUE)
+
+  melted_petitions
 }

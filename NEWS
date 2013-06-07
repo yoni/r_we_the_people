@@ -1,3 +1,7 @@
+wethepeople 0.6.0
+-----------------
+* Adds a  box plot for signatures by issue.
+
 wethepeople 0.5
 ---------------
 * Fixes #2, namely making assuming all fields are camel-case instead of snake-case, in accordance

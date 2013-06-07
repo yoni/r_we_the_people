@@ -12,7 +12,7 @@ Description: Implements an R client for the We The People petitions API. The
     API limits requests to 10/second. For bulk data loading, please use the
     data dump provided by the White House:
     https://petitions.whitehouse.gov/developers
-Version: 0.5
+Version: 0.6.0
 License: GPL-3
 Author: Yoni Ben-Meshulam
 Maintainer: Yoni Ben-Meshulam <yoni@opower.com>
@@ -41,3 +41,4 @@ Collate:
     'plot_signatures_by_time_of_day.r'
     'WeThePeopleAPIClient.r'
     'WeThePeopleMySQLClient.r'
+    'plot_issue_signatures.r'
