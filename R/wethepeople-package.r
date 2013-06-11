@@ -51,6 +51,7 @@ if(getRversion() >= "2.15.1") globalVariables(c(
   "signatureCount",
   "status",
   "hour",
-  "sentiment_score"
+  "sentiment_score",
+  "sentiment_polarity"
   )
 )

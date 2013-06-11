@@ -46,3 +46,4 @@ Collate:
     'IMPORTANT_DATES.r'
     'plot_sentiment_analysis.r'
     'plot_sentiment_density.r'
+    'plot_sentiment_vs_signatures.r'
