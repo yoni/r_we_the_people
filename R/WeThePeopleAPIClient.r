@@ -122,7 +122,6 @@ WeThePeopleAPIClient <- function() {
   #' Retrieves signatures for all of the given petitions.
   signatures <- function(petitions) {
     count <- 0
-    total <- nrow(petitions)
     ddply(
       petitions,
       .(id),

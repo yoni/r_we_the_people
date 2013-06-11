@@ -42,3 +42,6 @@ Collate:
     'WeThePeopleAPIClient.r'
     'WeThePeopleMySQLClient.r'
     'plot_issue_signatures.r'
+    'WeTheEntitiesAPIClient.r'
+    'IMPORTANT_DATES.r'
+    'plot_sentiment_analysis.r'

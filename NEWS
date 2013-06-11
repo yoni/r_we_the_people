@@ -1,6 +1,7 @@
 wethepeople 0.6.0
 -----------------
 * Adds a  box plot for signatures by issue.
+* Adds a We the Entities client, supporting entity and sentiment extraction from petition text.
 
 wethepeople 0.5
 ---------------
