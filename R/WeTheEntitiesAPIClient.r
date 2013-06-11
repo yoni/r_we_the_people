@@ -29,6 +29,10 @@ WeTheEntitiesAPIClient <- function() {
         )
       }
     )
+    analyses$sentiment_polarity <- factor(analyses$sentiment_polarity,
+      levels=c('negative', 'neutral', 'positive'),
+      ordered=TRUE
+    )
     merge(petitions, analyses)
   }
 
