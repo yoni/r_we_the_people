@@ -47,3 +47,4 @@ Collate:
     'plot_sentiment_analysis.r'
     'plot_sentiment_density.r'
     'plot_sentiment_vs_signatures.r'
+    'plot_signature_counts_by_status.r'
