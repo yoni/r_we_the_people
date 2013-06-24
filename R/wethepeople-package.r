@@ -32,6 +32,14 @@ NULL
 #' @keywords data
 NULL
 
+#' Petition sentiment analyses loaded Feb 19, 2013
+#'
+#' @name petition_analyses
+#' @docType data
+#' @author Yoni Ben-Meshulam \email{yoni@@opower.com}
+#' @keywords data
+NULL
+
 #' Signatures loaded Feb 19, 2013
 #'
 #' Sample signatures loaded from the API on February 19, 2013.
@@ -52,6 +60,11 @@ if(getRversion() >= "2.15.1") globalVariables(c(
   "status",
   "hour",
   "sentiment_score",
-  "sentiment_polarity"
+  "sentiment_polarity",
+  "entity_type",
+  "entity_title",
+  "avg_sentiment",
+  "mean_sentiment",
+  "petitions_issues"
   )
 )
